@@ -16,6 +16,10 @@ export default {
 </script>
 
 <style lang="scss">
+html, body {
+  margin: 0;
+  font-size: 16px;
+}
 #app {
   height: 100%;
   width: 100%;
