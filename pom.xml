@@ -6,7 +6,7 @@
 	<groupId>de.jonashackt</groupId>
 	<artifactId>spring-boot-vuejs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>m
+	<packaging>pom</packaging>
 
 	<name>spring-boot-vuejs</name>
 	<description>Demo project for Spring Boot</description>
