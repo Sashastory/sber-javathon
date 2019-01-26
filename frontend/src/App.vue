@@ -1,45 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Hello</router-link> |
-      <router-link to="/callservice">Service</router-link> |
-      <router-link to="/bootstrap">Bootstrap</router-link> |
-      <router-link to="/user">User</router-link>
-    </div>
-    <router-view :hellomsg="msg"></router-view>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
+import MainComponent from './components/MainComponent';
 
 export default {
   name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to your Vue.js powered Spring Boot App'
+    components: {
+        MainComponent
     }
-  }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 20px;
+html, body {
+  margin: 0;
+  font-size: 16px;
 }
-
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-     color: #42b983;
-    }
-  }
+#app {
+  height: 100%;
+  width: 100%;
 }
 </style>
