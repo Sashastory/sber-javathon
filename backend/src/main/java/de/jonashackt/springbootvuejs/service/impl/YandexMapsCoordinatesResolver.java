@@ -1,6 +1,5 @@
-package de.jonashackt.springbootvuejs.yandex;
+package de.jonashackt.springbootvuejs.service.impl;
 
-import com.google.gson.Gson;
 import de.jonashackt.springbootvuejs.model.gsonobject.Feature;
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
 import org.springframework.beans.factory.annotation.Value;

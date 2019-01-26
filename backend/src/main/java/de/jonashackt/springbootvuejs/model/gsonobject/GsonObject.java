@@ -3,11 +3,14 @@ package de.jonashackt.springbootvuejs.model.gsonobject;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.ToString;
 
 /**
  * @author slav9n4ik
  * @date 2019-01-26 18:36
  */
+
+@ToString
 public class GsonObject {
 
     @SerializedName("type")

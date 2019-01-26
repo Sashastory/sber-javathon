@@ -2,7 +2,9 @@ package de.jonashackt.springbootvuejs.model.gsonobject;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.ToString;
 
+@ToString
 public class Feature {
 
     @SerializedName("type")
