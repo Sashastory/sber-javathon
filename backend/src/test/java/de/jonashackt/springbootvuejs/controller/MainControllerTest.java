@@ -39,7 +39,7 @@ public class MainControllerTest {
 		.then()
 			.statusCode(HttpStatus.SC_OK)
 			.assertThat()
-				.body(is(equalTo(MainController.HELLO_TEXT)));
+				.body(is(equalTo(MainController.MOCK_RESOURCE)));
 	}
 
 }
