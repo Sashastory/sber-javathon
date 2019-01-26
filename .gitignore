@@ -1,5 +1,8 @@
 *.class
 
+application.properties
+!example-application.properties
+
 # Package Files #
 *.jar
 *.war

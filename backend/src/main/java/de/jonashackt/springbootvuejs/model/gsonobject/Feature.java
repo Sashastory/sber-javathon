@@ -52,4 +52,13 @@ public class Feature {
         this.properties = properties;
     }
 
+    @Override
+    public String toString() {
+        return "Feature{" +
+                "type='" + type + '\'' +
+                ", id=" + id +
+                ", geometry=" + geometry +
+                ", properties=" + properties +
+                '}';
+    }
 }

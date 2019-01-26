@@ -74,4 +74,15 @@ public class Properties {
         this.strokeOpacity = strokeOpacity;
     }
 
+    @Override
+    public String toString() {
+        return "Properties{" +
+                "description='" + description + '\'' +
+                ", fill='" + fill + '\'' +
+                ", fillOpacity=" + fillOpacity +
+                ", stroke='" + stroke + '\'' +
+                ", strokeWidth='" + strokeWidth + '\'' +
+                ", strokeOpacity=" + strokeOpacity +
+                '}';
+    }
 }
