@@ -1,7 +1,6 @@
 package de.jonashackt.springbootvuejs.controller;
 
 import de.jonashackt.springbootvuejs.SpringBootVuejsApplication;
-import de.jonashackt.springbootvuejs.domain.User;
 import io.restassured.RestAssured;
 import org.apache.http.HttpStatus;
 import org.junit.Before;
@@ -42,35 +41,5 @@ public class BackendControllerTest {
 			.assertThat()
 				.body(is(equalTo(BackendController.HELLO_TEXT)));
 	}
-
-	@Test
-    public void addNewUserAndRetrieveItBack() {
-        User norbertSiegmund = new User("Norbert", "Siegmund");
-
-        Long userId =
-            given()
-                .queryParam("firstName", "Norbert")
-                .queryParam("lastName", "Siegmund")
-            .when()
-                .post("/api/user")
-            .then()
-                .statusCode(is(HttpStatus.SC_CREATED))
-                .extract()
-                    .body().as(Long.class);
-
-	    User responseUser =
-            given()
-                    .pathParam("id", userId)
-                .when()
-                    .get("/api/user/{id}")
-                .then()
-                    .statusCode(HttpStatus.SC_OK)
-                    .assertThat()
-                        .extract().as(User.class);
-
-	    // Did Norbert came back?
-        assertThat(responseUser.getFirstName(), is("Norbert"));
-        assertThat(responseUser.getLastName(), is("Siegmund"));
-    }
 
 }
