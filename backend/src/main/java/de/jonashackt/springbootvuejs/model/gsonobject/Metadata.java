@@ -27,4 +27,12 @@ public class Metadata {
     public void setCreator(String creator) {
         this.creator = creator;
     }
+
+    @Override
+    public String toString() {
+        return "Metadata{" +
+                "name='" + name + '\'' +
+                ", creator='" + creator + '\'' +
+                '}';
+    }
 }

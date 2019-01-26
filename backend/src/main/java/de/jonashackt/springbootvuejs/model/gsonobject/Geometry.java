@@ -29,4 +29,11 @@ public class Geometry {
         this.coordinates = coordinates;
     }
 
+    @Override
+    public String toString() {
+        return "Geometry{" +
+                "type='" + type + '\'' +
+                ", coordinates=" + coordinates +
+                '}';
+    }
 }

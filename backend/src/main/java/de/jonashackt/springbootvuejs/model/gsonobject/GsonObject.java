@@ -44,4 +44,12 @@ public class GsonObject {
         this.features = features;
     }
 
+    @Override
+    public String toString() {
+        return "GsonObject{" +
+                "type='" + type + '\'' +
+                ", metadata=" + metadata +
+                ", features=" + features +
+                '}';
+    }
 }
