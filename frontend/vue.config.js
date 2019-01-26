@@ -1,5 +1,4 @@
 // vue.config.js
-const ArcGISPlugin = require('@arcgis/webpack-plugin');
 
 module.exports = {
   // proxy all webpack dev-server requests starting with /api
@@ -13,11 +12,6 @@ module.exports = {
         changeOrigin: true,
       },
     },
-  },
-  configureWebpack: {
-    plugins: [
-      new ArcGISPlugin(),
-    ],
   },
   // Change build paths to make them Maven compatible
   // see https://cli.vuejs.org/config/
