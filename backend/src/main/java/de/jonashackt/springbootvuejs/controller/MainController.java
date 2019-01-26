@@ -1,5 +1,7 @@
 package de.jonashackt.springbootvuejs.controller;
 
+import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
+import de.jonashackt.springbootvuejs.yandex.YandexMapsCoordinatesResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +14,16 @@ public class MainController {
 
     public static final String MOCK_RESOURCE = "Mock resource";
 
+    private final YandexMapsCoordinatesResolver coordinatesResolver;
+
+    public MainController(YandexMapsCoordinatesResolver coordinatesResolver) {
+        this.coordinatesResolver = coordinatesResolver;
+    }
+
     @PostMapping(path = "/atms")
-    public @ResponseBody String getAtms(@RequestBody String body) {
-        LOG.info(body);
-        return MOCK_RESOURCE;
+    public @ResponseBody GsonObject getAtms(@RequestBody GsonObject body) {
+        LOG.info(body.toString());
+        return body;
     }
 
 
