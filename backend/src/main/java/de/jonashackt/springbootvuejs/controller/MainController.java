@@ -24,13 +24,13 @@ public class MainController {
         this.cashMachineTestService = testService;
     }
 
-    @PostMapping(path = "/atms")
-    public @ResponseBody String getAtms(@RequestBody GsonObject body) {
+    @PostMapping(path = "/cashMachines", produces = "application/json")
+    public @ResponseBody String getCashMachines(@RequestBody GsonObject body) {
         LOG.info(body.toString());
         return expertSystemService.getCashMachines(body);
     }
 
-    @PostMapping(path = "/testatms")
+    @PostMapping(path = "/testCashMachines")
     public @ResponseBody GsonObject getTestAtms(@RequestBody GsonObject body) {
         GsonObject testGson = cashMachineTestService.getTestGson();
         LOG.info(body.toString());
