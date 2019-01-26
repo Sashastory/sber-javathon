@@ -4,6 +4,7 @@ import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
 import reactor.core.publisher.Mono;
 
 /**
+ * Интерфейс для определения координат объекта на основе текущей локации
  * @author aleksandr
  * @date 2019-01-26 18:35
  */
