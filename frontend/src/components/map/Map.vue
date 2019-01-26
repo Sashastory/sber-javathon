@@ -4,7 +4,7 @@
         <location
                 :view="view"
                 @location="setPosition"
-                @location:failed="cantSetPosition"
+                @locationfailed="cantSetPosition"
                 class="location"></location>
         <myLocation class="myLocationContainer"></myLocation>
     </div>
@@ -62,8 +62,22 @@
                     });
                     this.view.when(() => {
                         this.viewReady = true;
-                        // this.view.
+
+                        if (navigator.geolocation) {
+                            navigator.geolocation
+                                .getCurrentPosition(
+                                    this.setPosition,
+                                    () => this.setPosition({
+                                        coords: {
+                                            longitude: 37.531342,
+                                            latitude: 55.741432,
+                                        }
+                                    }));
+                        } else {
+                            this.cantSetPosition();
+                        }
                     });
+
                     this.view.constraints = {
                         rotationEnabled: false
                     };
