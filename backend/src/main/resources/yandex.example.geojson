@@ -1,0 +1,409 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "Attribution": {
+      "Sources": {
+        "facebook": {
+          "id": "facebook",
+          "author": {
+            "name": "Facebook",
+            "uri": "http:\/\/facebook.com"
+          }
+        },
+        "ok": {
+          "id": "ok",
+          "author": {
+            "name": "Одноклассники",
+            "uri": "http:\/\/ok.ru"
+          }
+        },
+        "twitter": {
+          "id": "twitter",
+          "author": {
+            "name": "Twitter",
+            "uri": "http:\/\/twitter.com"
+          }
+        },
+        "sberbank-bankomat": {
+          "id": "sberbank-bankomat",
+          "author": {
+            "name": "Сбербанк России",
+            "uri": "http:\/\/www.sberbank.ru"
+          }
+        },
+        "vkontakte": {
+          "id": "vkontakte",
+          "author": {
+            "name": "ВКонтакте",
+            "uri": "http:\/\/vk.com"
+          }
+        },
+        "yandex": {
+          "id": "yandex",
+          "author": {
+            "name": "Яндекс",
+            "uri": "https:\/\/www.yandex.ru"
+          }
+        },
+        "aqua_sbkz_atm": {
+          "id": "aqua_sbkz_atm",
+          "author": {
+            "name": "sberbank.kz",
+            "uri": "http:\/\/www.sberbank.kz"
+          }
+        },
+        "youtube": {
+          "id": "youtube",
+          "author": {
+            "name": "YouTube",
+            "uri": "http:\/\/youtube.com"
+          }
+        },
+        "instagram": {
+          "id": "instagram",
+          "author": {
+            "name": "Instagram",
+            "uri": "http:\/\/instagram.com"
+          }
+        }
+      }
+    },
+    "ResponseMetaData": {
+      "SearchRequest": {
+        "request": "банкоматы Сбербанк",
+        "results": 2,
+        "skip": 0,
+        "boundedBy": [
+          [
+            37.048426749999997,
+            55.436448290000001
+          ],
+          [
+            38.175902260000001,
+            56.046901239999997
+          ]
+        ]
+      },
+      "SearchResponse": {
+        "found": 12,
+        "display": "multiple"
+      }
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1",
+        "CompanyMetaData": {
+          "id": "1044581598",
+          "name": "Сбербанк России, банкомат",
+          "nameHighlight": [
+            [
+              0,
+              8
+            ],
+            [
+              17,
+              25
+            ]
+          ],
+          "shortName": "Сбербанк",
+          "address": "Красная площадь, 3",
+          "postalCode": "109012",
+          "url": "http:\/\/www.sberbank.ru\/",
+          "Categories": [
+            {
+              "class": "atm",
+              "name": "Банкомат",
+              "Tags": {
+                "tag": "plural_name:Банкоматы"
+              }
+            }
+          ],
+          "Chains": [
+            {
+              "id": "6003611",
+              "name": "Сбербанк России, банкоматы",
+              "seoname": "sberbank"
+            }
+          ],
+          "Phones": [
+            {
+              "type": "phone",
+              "formatted": "8 (800) 555-55-50",
+              "country": "7",
+              "prefix": "800",
+              "number": "5555550"
+            },
+            {
+              "type": "phone",
+              "formatted": "+7 (495) 555-55-50",
+              "country": "7",
+              "prefix": "495",
+              "number": "5555550"
+            },
+            {
+              "type": "phone",
+              "formatted": "+7 (495) 500-55-50",
+              "country": "7",
+              "prefix": "495",
+              "number": "5005550"
+            }
+          ],
+          "Hours": {
+            "Availabilities": [
+              {
+                "Everyday": true,
+                "Intervals": [
+                  {
+                    "from": "10:00:00",
+                    "to": "22:00:00"
+                  }
+                ]
+              }
+            ],
+            "text": "ежедневно, 10:00–22:00",
+            "tzOffset": 10800,
+            "State": {
+              "is_open_now": "0",
+              "text": "Закрыто до 10:00",
+              "short_text": "Закрыто до 10:00"
+            }
+          },
+          "Geo": {
+            "precision": "exact"
+          },
+          "Features": [
+            {
+              "id": "cash_to_card",
+              "type": "bool",
+              "name": "внесение наличных",
+              "value": false
+            },
+            {
+              "id": "location_opening_hours",
+              "type": "bool",
+              "name": "в режиме работы места установки",
+              "value": true
+            }
+          ],
+          "Snippet": {
+            "FeatureSet": [
+              "cash_to_card"
+            ]
+          },
+          "Links": [
+            {
+              "type": "social",
+              "aref": "#twitter",
+              "href": "https:\/\/twitter.com\/sberbank"
+            },
+            {
+              "type": "social",
+              "aref": "#vkontakte",
+              "href": "https:\/\/vk.com\/sberbank"
+            },
+            {
+              "type": "social",
+              "aref": "#facebook",
+              "href": "https:\/\/www.facebook.com\/sberbank"
+            },
+            {
+              "type": "social",
+              "aref": "#instagram",
+              "href": "https:\/\/www.instagram.com\/sberbank\/"
+            }
+          ],
+          "Properties": {
+            "Property": {
+              "key": "sensitive",
+              "value": "1"
+            }
+          }
+        },
+        "References": {
+          "items": [
+            {
+              "scope": "parent_org",
+              "id": "1331623198"
+            }
+          ]
+        },
+        "description": "Красная площадь, 3",
+        "name": "Сбербанк России, банкомат",
+        "boundedBy": [
+          [
+            37.617437610000003,
+            55.752358739999998
+          ],
+          [
+            37.625648210000001,
+            55.756989019999999
+          ]
+        ],
+        "attributions": [
+          "#sberbank-bankomat",
+          "#yandex"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.621544,
+          55.754672999999997
+        ]
+      },
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            37.621544,
+            55.754672999999997
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2",
+        "CompanyMetaData": {
+          "id": "1024157025",
+          "name": "Сбербанк России, банкомат",
+          "nameHighlight": [
+            [
+              0,
+              8
+            ],
+            [
+              17,
+              25
+            ]
+          ],
+          "shortName": "Сбербанк",
+          "address": "ул. 7-я Линия, 23, Видное",
+          "url": "http:\/\/www.sberbank.ru\/",
+          "Categories": [
+            {
+              "class": "atm",
+              "name": "Банкомат",
+              "Tags": {
+                "tag": "plural_name:Банкоматы"
+              }
+            }
+          ],
+          "Chains": [
+            {
+              "id": "6003611",
+              "name": "Сбербанк России, банкоматы",
+              "seoname": "sberbank"
+            }
+          ],
+          "Phones": [
+            {
+              "type": "phone",
+              "formatted": "8 (800) 555-55-50",
+              "country": "7",
+              "prefix": "800",
+              "number": "5555550"
+            }
+          ],
+          "Geo": {
+            "precision": "exact"
+          },
+          "Features": [
+            {
+              "id": "operations_accounts_cards",
+              "type": "enum",
+              "name": "операции со счетами и картами",
+              "values": [
+                {
+                  "id": "issuance_of_cash",
+                  "value": "выдача наличности"
+                }
+              ]
+            },
+            {
+              "id": "cash_to_card",
+              "type": "bool",
+              "name": "внесение наличных",
+              "value": true
+            },
+            {
+              "id": "location_opening_hours",
+              "type": "bool",
+              "name": "в режиме работы места установки",
+              "value": false
+            }
+          ],
+          "Snippet": {
+            "FeatureSet": [
+              "cash_to_card"
+            ]
+          },
+          "Links": [
+            {
+              "type": "social",
+              "aref": "#twitter",
+              "href": "https:\/\/twitter.com\/sberbank"
+            },
+            {
+              "type": "social",
+              "aref": "#vkontakte",
+              "href": "https:\/\/vk.com\/sberbank"
+            },
+            {
+              "type": "social",
+              "aref": "#facebook",
+              "href": "https:\/\/www.facebook.com\/sberbank"
+            },
+            {
+              "type": "social",
+              "aref": "#instagram",
+              "href": "https:\/\/www.instagram.com\/sberbank\/"
+            }
+          ],
+          "Properties": {
+            "Property": {
+              "key": "sensitive",
+              "value": "1"
+            }
+          }
+        },
+        "description": "ул. 7-я Линия, 23, Видное",
+        "name": "Сбербанк России, банкомат",
+        "boundedBy": [
+          [
+            37.749328259999999,
+            55.547254600000002
+          ],
+          [
+            37.757520900000003,
+            55.551909289999998
+          ]
+        ],
+        "attributions": [
+          "#sberbank-bankomat",
+          "#yandex"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.753428999999997,
+          55.549582999999998
+        ]
+      },
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            37.753428999999997,
+            55.549582999999998
+          ]
+        }
+      ]
+    }
+  ]
+}
