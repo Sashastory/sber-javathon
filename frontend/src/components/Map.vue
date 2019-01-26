@@ -17,9 +17,9 @@ export default {
     },
     mounted() {
         esriLoader.loadModules(['esri/views/MapView', 'esri/Map'])
-            .then(function([MapView, Map]) {
+            .then(([MapView, Map]) => {
                     this.map = new Map({
-                        basemap: "streets"
+                        basemap: "osm"
                     });
                     console.log(this.map);
                     this.view = new MapView({
@@ -27,14 +27,17 @@ export default {
                         map: this.map,
                         zoom: 15,
                         center: [37.600531, 55.751666],
+                        ui: null,
                     });
                     console.log(this.view);
-                }.bind(this))
+                })
             .catch(err => {
-                // handle any errors
                 console.error(err);
             });
     },
+    created() {
+        esriLoader.loadCss('https://js.arcgis.com/4.10/esri/css/main.css');
+    }
 }
 </script>
 <style>
