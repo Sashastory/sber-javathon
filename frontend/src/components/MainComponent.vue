@@ -1,6 +1,9 @@
 <template>
     <div class="main">
-        <FeatureToggle></FeatureToggle>
+        <FeatureToggle
+            :activeFeature='activeFeature'
+            @toggleFeature="toggleFeature">
+        </FeatureToggle>
         <Map></Map>
     </div>
 </template>
@@ -14,6 +17,21 @@ export default {
     components: {
         Map,
         FeatureToggle,
+    },
+    data() {
+      return {
+        activeFeature: 0,
+        features: [ 
+          'take',
+          'deposit',
+        ]
+      };
+    },
+    methods: {
+      toggleFeature(index) {
+        this.activeFeature = index;
+        console.log(this.features[index]);
+      }
     },
 }
 </script>
