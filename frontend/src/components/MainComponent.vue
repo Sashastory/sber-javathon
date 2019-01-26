@@ -1,12 +1,17 @@
 <template>
     <div>
-        MainComponent
+        <Map></Map>
     </div>
 </template>
 
 <script>
+import Map from './Map';
+
 export default {
-    name: "MainComponent"
+    name: "MainComponent",
+    components: {
+        Map,
+    },
 }
 </script>
 
