@@ -1,4 +1,4 @@
-package de.jonashackt.springbootvuejs.service;
+package de.jonashackt.springbootvuejs.service.impl;
 
 /**
  * @author aleksandr

@@ -1,7 +1,6 @@
 package de.jonashackt.springbootvuejs.controller;
 
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
-import de.jonashackt.springbootvuejs.yandex.YandexMapsCoordinatesResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;

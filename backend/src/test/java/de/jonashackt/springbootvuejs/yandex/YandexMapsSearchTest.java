@@ -1,6 +1,7 @@
 package de.jonashackt.springbootvuejs.yandex;
 
 import com.google.gson.Gson;
+import de.jonashackt.springbootvuejs.service.impl.YandexMapsCoordinatesResolver;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
