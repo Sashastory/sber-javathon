@@ -56,8 +56,8 @@ public class YandexMapsCoordinatesResolver implements ICoordinatesResolver {
         Double maxLng = -180.0;
 
         for (List<Double> coordinate : coordinates) {
-            Double currLat = coordinate.get(0);
-            Double currLng = coordinate.get(1);
+            Double currLng = coordinate.get(0);
+            Double currLat = coordinate.get(1);
 
             if (currLat < minLat) minLat = currLat;
             if (currLat > maxLat) maxLat = currLat;
@@ -65,7 +65,6 @@ public class YandexMapsCoordinatesResolver implements ICoordinatesResolver {
             if (currLng > maxLng) maxLng = currLng;
         }
 
-        // TODO verify
         return minLng + "," +
                 minLat + "~" +
                 maxLng + "," +
