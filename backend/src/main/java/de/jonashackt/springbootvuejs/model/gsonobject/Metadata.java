@@ -13,6 +13,14 @@ public class Metadata {
     @Expose
     private String creator;
 
+    public Metadata() {
+    }
+
+    public Metadata(String name, String creator) {
+        this.name = name;
+        this.creator = creator;
+    }
+
     public String getName() {
         return name;
     }
