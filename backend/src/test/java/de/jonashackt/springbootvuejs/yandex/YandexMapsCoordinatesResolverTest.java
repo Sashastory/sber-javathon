@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import reactor.core.publisher.Mono;
@@ -18,6 +19,7 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest(classes = { YandexMapsCoordinatesResolver.class })
 @EnableConfigurationProperties
@@ -41,12 +43,12 @@ public class YandexMapsCoordinatesResolverTest {
                 new ArrayList<List<List<Double>>>() {{
                     add(new ArrayList<List<Double>>() {{
                         add(new ArrayList<Double>() {{
-                            add(36.83);
-                            add(55.67);
+                            add(37.5264133);
+                            add(55.7335432);
                         }});
                         add(new ArrayList<Double>() {{
-                            add(38.24);
-                            add(55.91);
+                            add(37.578392);
+                            add(55.705260);
                         }});
                     }});
                 }});
@@ -57,8 +59,7 @@ public class YandexMapsCoordinatesResolverTest {
         Mono<String> mono = yandexMapsCoordinatesResolver.search(object, "Банкоматы Сбербанк");
         String res = mono.block();
 
-        GsonObject serialized = new Gson()
-                .fromJson(res, new TypeToken<GsonObject>() {}.getType());
-        System.out.println(serialized);
+        System.out.println(res);
+
     }
 }
