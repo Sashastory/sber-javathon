@@ -9,7 +9,10 @@
                 Показать банкоматы
             </button>
         </div>
-        <List></List>
+        <List
+            @expand="expandList"
+            :listExpanded="listExpanded">
+        </List>
         <Map></Map>
     </div>
 </template>
@@ -29,6 +32,7 @@ export default {
     data() {
       return {
         activeFeature: 0,
+        listExpanded: false,
         features: [ 
           'take',
           'deposit',
@@ -42,7 +46,10 @@ export default {
       },
       getATM() {
           console.log('get ATM');
-      }
+      },
+      expandList() {
+          this.listExpanded = !this.listExpanded;
+      },
     },
 }
 </script>

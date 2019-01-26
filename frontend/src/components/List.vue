@@ -1,6 +1,6 @@
 <template>
-  <div class="list">
-    <div class="expand"></div>
+  <div class="list" :class="{expanded: expandList}">
+    <div class="expand" @click="expandList"></div>
     <div class="item">
       Адрес: Совхозная, 3
     </div>
@@ -11,6 +11,9 @@
 
 export default {
   name: 'List',
+  props: {
+    expandList: Boolean,
+  },
 }
 </script>
 
@@ -35,5 +38,8 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 2.5rem;
+  }
+  .expanded {
+    bottom: 0;
   }
 </style>
