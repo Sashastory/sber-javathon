@@ -6,6 +6,9 @@ import de.jonashackt.springbootvuejs.service.ICashMachineAssesser;
 import de.jonashackt.springbootvuejs.service.ICoordinatesResolver;
 import de.jonashackt.springbootvuejs.service.IMapper;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 /**
  * @author aleksandr
@@ -18,15 +21,20 @@ public class ExpertSystemService {
 
     private ICoordinatesResolver coordinatesResolver;
 
-    private IMapper<CashMachine, String> mapper;
+    private IMapper<CashMachine> mapper;
 
     public GsonObject getCashMachines(GsonObject currentLocation) {
         // ПОЛУЧАЕМ GEOJSON С БАНКОМАТАМИ
-
-        // МАПИМ ЕГО В БАНКОМАТЫ И СОХРАНЯЕМ ИХ В БД
+        Mono<String> geoJson = coordinatesResolver.search(currentLocation, "банкоматы Сбербанка");
 
         // ОЦЕНИВАЕМ ЯКОБЫ СБЕРОМ ДОСТУПНЫ ЛИ БАНКОМАТЫ
         // ОНИ КЛАДУТ ТОГГЛ В ПОЛЕ ДЕСКРИПШН
+
+        // МАПИМ ЕГО В БАНКОМАТЫ И СОХРАНЯЕМ ИХ В БД
+        String jsonValue = geoJson.block();
+        List<CashMachine> map = mapper.map(jsonValue);
+
+
 
         return null;
 
