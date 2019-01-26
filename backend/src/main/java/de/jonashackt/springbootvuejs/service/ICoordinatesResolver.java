@@ -1,6 +1,7 @@
 package de.jonashackt.springbootvuejs.service;
 
 import de.jonashackt.springbootvuejs.model.GsonObject;
+import reactor.core.publisher.Mono;
 
 /**
  * @author aleksandr
@@ -10,10 +11,10 @@ public interface ICoordinatesResolver {
 
     /**
      *
-     * @param currentLocation GsonObject объект текущей локации
+     * @param currentLocation GsªonObject объект текущей локации
      * @param type Тип локации - больница/школа/банкомат и т п
      * @return
      */
-    GsonObject getCoordinates(GsonObject currentLocation, String type);
+    Mono<GsonObject> getCoordinates(GsonObject currentLocation, String type);
 
 }
