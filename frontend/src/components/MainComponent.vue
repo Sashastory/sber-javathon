@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Map from './Map';
+import Map from './map/Map';
 
 export default {
     name: "MainComponent",
