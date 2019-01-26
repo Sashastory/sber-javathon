@@ -10,13 +10,12 @@
             </button>
         </div>
         <List></List>
-        <Map></Map>
+        <Map class="map"></Map>
     </div>
 </template>
 
 <script>
 import Map from './map/Map';
-import Map from './Map';
 import FeatureToggle from './FeatureToggle';
 import List from './List';
 
@@ -49,6 +48,10 @@ export default {
 </script>
 
 <style>
+    .map {
+        height: 100%;
+        width: 100%;
+    }
 .main {
     position: relative;
     height: 100%;
@@ -87,5 +90,14 @@ button:hover {
     background-size: 42px;
     background-repeat: no-repeat;
     background-position: 1rem center;
+}
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
 }
 </style>

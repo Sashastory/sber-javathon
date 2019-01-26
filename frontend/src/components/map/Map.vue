@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="containerMap">
         <div id="mapView" ref="map"></div>
         <location
                 :view="view"
@@ -125,11 +125,20 @@
         }
     }
 </script>
-<style>
+<style scoped>
     .myLocationContainer {
         position: absolute;
         top: calc(50% - 32px);
         left: calc(50% - 16px);
+    }
+
+    .containerMap {
+        height: 100%;
+        width: 100%;
+    }
+    #mapView{
+        height: 100%;
+        width: 100%;
     }
 
     div {
@@ -137,19 +146,9 @@
         width: 100%;
     }
 
-    html {
-        height: 100%;
-        width: 100%;
-    }
-
     body {
         height: 100%;
         width: 100%;
-    }
-
-    #mapView {
-        width: 100%;
-        height: 100%;
     }
 
     .esri-view-user-storage {
