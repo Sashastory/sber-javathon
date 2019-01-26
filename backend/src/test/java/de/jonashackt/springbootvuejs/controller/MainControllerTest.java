@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.is;
 		classes = SpringBootVuejsApplication.class,
 		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
-public class BackendControllerTest {
+public class MainControllerTest {
 
 	@LocalServerPort
 	private int port;
@@ -39,7 +39,7 @@ public class BackendControllerTest {
 		.then()
 			.statusCode(HttpStatus.SC_OK)
 			.assertThat()
-				.body(is(equalTo(BackendController.HELLO_TEXT)));
+				.body(is(equalTo(MainController.HELLO_TEXT)));
 	}
 
 }
