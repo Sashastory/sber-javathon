@@ -1,5 +1,5 @@
 <template>
-    <div id="mapView">
+    <div id="mapView" ref="map">
     </div>
 </template>
 
@@ -23,10 +23,10 @@ export default {
                     });
                     console.log(this.map);
                     this.view = new MapView({
-                        container: "viewDiv",
+                        container: this.$refs.map,
                         map: this.map,
-                        zoom: 4,
-                        center: [53, 55],
+                        zoom: 15,
+                        center: [37.600531, 55.751666],
                     });
                     console.log(this.view);
                 }.bind(this))
@@ -34,7 +34,6 @@ export default {
                 // handle any errors
                 console.error(err);
             });
-
     },
 }
 </script>
