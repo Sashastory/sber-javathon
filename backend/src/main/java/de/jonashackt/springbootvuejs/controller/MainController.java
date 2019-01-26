@@ -14,12 +14,6 @@ public class MainController {
 
     public static final String MOCK_RESOURCE = "Mock resource";
 
-    private final YandexMapsCoordinatesResolver coordinatesResolver;
-
-    public MainController(YandexMapsCoordinatesResolver coordinatesResolver) {
-        this.coordinatesResolver = coordinatesResolver;
-    }
-
     @PostMapping(path = "/atms")
     public @ResponseBody GsonObject getAtms(@RequestBody GsonObject body) {
         LOG.info(body.toString());

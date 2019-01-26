@@ -1,7 +1,6 @@
 package de.jonashackt.springbootvuejs.service;
 
-import com.google.gson.Gson;
-import org.springframework.util.MultiValueMap;
+import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
 import reactor.core.publisher.Mono;
 
 /**
@@ -11,10 +10,11 @@ import reactor.core.publisher.Mono;
 public interface ICoordinatesResolver {
 
     /**
-     * Получение GsonObject по определенным параметрам
-     * @param params
+     *
+     * @param current GsonObject текущей локации
+     * @param type Тип локации - банкомат/больница
      * @return
      */
-    Mono<Gson> search(MultiValueMap<String, String> params);
+    Mono<GsonObject> search(GsonObject current, String type);
 
 }

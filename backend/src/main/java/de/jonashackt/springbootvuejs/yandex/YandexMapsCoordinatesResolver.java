@@ -1,7 +1,6 @@
 package de.jonashackt.springbootvuejs.yandex;
 
 import com.google.gson.Gson;
-import de.jonashackt.springbootvuejs.service.ICoordinatesResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
@@ -11,7 +10,7 @@ import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 
 @Service
-public class YandexMapsCoordinatesResolver implements ICoordinatesResolver {
+public class YandexMapsCoordinatesResolver {
 
     @Value("${key.yandex}")
     private String KEY;
@@ -25,7 +24,6 @@ public class YandexMapsCoordinatesResolver implements ICoordinatesResolver {
                 .build();
     }
 
-    @Override
     public Mono<Gson> search(MultiValueMap<String, String> params) {
         Mono<Gson> mono = webClient.get()
                 .uri(builder -> builder
