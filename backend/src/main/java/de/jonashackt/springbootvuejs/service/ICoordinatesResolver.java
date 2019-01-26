@@ -14,8 +14,8 @@ public interface ICoordinatesResolver {
      *
      * @param current GsonObject текущей локации
      * @param type Тип локации - банкомат/больница
-     * @return
+     * @return ответ Yandex.Maps API в формате JSON
      */
-    Mono<GsonObject> search(GsonObject current, String type);
+    Mono<String> search(GsonObject current, String type);
 
 }

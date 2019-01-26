@@ -2,6 +2,7 @@ package de.jonashackt.springbootvuejs.service.impl;
 
 import de.jonashackt.springbootvuejs.model.gsonobject.Feature;
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
+import de.jonashackt.springbootvuejs.service.ICoordinatesResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -11,7 +12,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
-public class YandexMapsCoordinatesResolver {
+public class YandexMapsCoordinatesResolver implements ICoordinatesResolver {
 
     @Value("${key.yandex}")
     private String KEY;
@@ -25,6 +26,7 @@ public class YandexMapsCoordinatesResolver {
                 .build();
     }
 
+    @Override
     public Mono<String> search(GsonObject request, String type) {
 
         List<Feature> features = request.getFeatures();
