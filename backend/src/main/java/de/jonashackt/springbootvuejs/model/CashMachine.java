@@ -1,4 +1,4 @@
-package de.jonashackt.springbootvuejs.model.sberbank;
+package de.jonashackt.springbootvuejs.model;
 
 import javax.persistence.*;
 
@@ -24,7 +24,7 @@ public class CashMachine {
     private Integer withdrawalLimit;
 
     // ЛИМИТ НА ДЕПОЗИТ
-    @Column(name = "DEPOSIT_LIMIT")
+    @Column(name = "DE  POSIT_LIMIT")
     private Integer depositLimit;
 
     // ШИРОТА

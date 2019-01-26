@@ -1,6 +1,7 @@
 package de.jonashackt.springbootvuejs.service.impl;
 
 import com.google.gson.Gson;
+import de.jonashackt.springbootvuejs.service.ICoordinatesResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
