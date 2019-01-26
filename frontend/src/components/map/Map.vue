@@ -48,6 +48,7 @@
             cantSetPosition() {
                 alert('невозможно определить позицию');
             },
+
             createBuffer() {
                 // var polySym = {
                 //     type: "simple-fill",

@@ -10,8 +10,19 @@ Vue.config.productionTip = false
 // Bootstrap
 Vue.use(BootstrapVue)
 
+
+Object.defineProperty(Vue.prototype, '$bus', {
+    get() {
+        return this.$root.bus;
+    },
+});
+
+
 new Vue({
     router,
-    render: h => h(App)
+    render: h => h(App),
+    data: {
+        bus: new Vue({}),
+    },
 }).$mount('#app')
 
