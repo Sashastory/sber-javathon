@@ -1,6 +1,6 @@
 package de.jonashackt.springbootvuejs.service;
 
-import de.jonashackt.springbootvuejs.model.GsonObject;
+import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
 
 /**
  * @author aleksandr
