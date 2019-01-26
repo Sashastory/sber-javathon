@@ -1,6 +1,6 @@
 package de.jonashackt.springbootvuejs.repository;
 
-import de.jonashackt.springbootvuejs.model.sberbank.CashMachine;
+import de.jonashackt.springbootvuejs.model.CashMachine;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

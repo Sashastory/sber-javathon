@@ -1,6 +1,8 @@
 package de.jonashackt.springbootvuejs.controller;
 
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
+import de.jonashackt.springbootvuejs.service.impl.CashMachineTestService;
+import de.jonashackt.springbootvuejs.service.impl.ExpertSystemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +15,30 @@ public class MainController {
 
     public static final String MOCK_RESOURCE = "Mock resource";
 
+    private ExpertSystemService expertSystemService;
+
+    private CashMachineTestService cashMachineTestService;
+
+    public MainController(ExpertSystemService expertSystemService, CashMachineTestService testService) {
+        this.expertSystemService = expertSystemService;
+        this.cashMachineTestService = testService;
+    }
+
     @PostMapping(path = "/atms")
     public @ResponseBody GsonObject getAtms(@RequestBody GsonObject body) {
         LOG.info(body.toString());
+        expertSystemService.getCashMachines(body);
         return body;
     }
+
+    @PostMapping(path = "/testatms")
+    public @ResponseBody GsonObject getTestAtms(@RequestBody GsonObject body) {
+        GsonObject testGson = cashMachineTestService.getTestGson();
+        LOG.info(body.toString());
+        LOG.info(testGson.toString());
+        return testGson;
+    }
+
 
 
 }
