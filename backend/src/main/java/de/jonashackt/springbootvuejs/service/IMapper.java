@@ -1,5 +1,7 @@
 package de.jonashackt.springbootvuejs.service;
 
+import java.util.List;
+
 /**
  * Интерфейс для маппинга объекта в объект
  * @author aleksandr
@@ -7,5 +9,5 @@ package de.jonashackt.springbootvuejs.service;
  */
 public interface IMapper<T, V> {
 
-    T map(V object);
+    List<T> map(V object);
 }

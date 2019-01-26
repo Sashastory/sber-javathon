@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface ICashMachineAssesser {
 
-    List<CashMachine> getAssessment(AssessmentScore score);
+    List<CashMachine> getAssessment(List<CashMachine> machines, AssessmentScore score);
 }
