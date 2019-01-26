@@ -21,9 +21,12 @@ public class ExpertSystemService {
 
     private ICoordinatesResolver coordinatesResolver;
 
-    private IMapper<CashMachine> mapper;
+    public ExpertSystemService(ICashMachineAssesser assesser, ICoordinatesResolver coordinatesResolver) {
+        this.assesser = assesser;
+        this.coordinatesResolver = coordinatesResolver;
+    }
 
-    public GsonObject getCashMachines(GsonObject currentLocation) {
+    public String getCashMachines(GsonObject currentLocation) {
         // ПОЛУЧАЕМ GEOJSON С БАНКОМАТАМИ
         Mono<String> geoJson = coordinatesResolver.search(currentLocation, "банкоматы Сбербанка");
 
@@ -32,11 +35,8 @@ public class ExpertSystemService {
 
         // МАПИМ ЕГО В БАНКОМАТЫ И СОХРАНЯЕМ ИХ В БД
         String jsonValue = geoJson.block();
-        List<CashMachine> map = mapper.map(jsonValue);
 
-
-
-        return null;
+        return jsonValue;
 
     }
 

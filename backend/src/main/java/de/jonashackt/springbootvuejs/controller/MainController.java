@@ -25,10 +25,9 @@ public class MainController {
     }
 
     @PostMapping(path = "/atms")
-    public @ResponseBody GsonObject getAtms(@RequestBody GsonObject body) {
+    public @ResponseBody String getAtms(@RequestBody GsonObject body) {
         LOG.info(body.toString());
-        expertSystemService.getCashMachines(body);
-        return body;
+        return expertSystemService.getCashMachines(body);
     }
 
     @PostMapping(path = "/testatms")
