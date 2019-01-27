@@ -1,11 +1,14 @@
 
 package de.jonashackt.springbootvuejs.model.gsonobject.yandex;
 
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.util.List;
 
 public class GeoJsonObject {
 
     private String type;
+    @Field("features")
     private List<Feature> features = null;
 
     public String getType() {
