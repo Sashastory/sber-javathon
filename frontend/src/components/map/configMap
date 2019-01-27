@@ -1,8 +1,8 @@
 export default {
     getURLServer() {
-        return 'http://10.8.18.42:8079/api/cashMachines';
+        return 'http://185.174.130.123:8079/api/cashMachines';
     },
     getURLBook() {
-        return 'http://10.8.18.42:8079/api/boolean';
+        return 'http://185.174.130.123:8079/api/boolean';
     },
 }

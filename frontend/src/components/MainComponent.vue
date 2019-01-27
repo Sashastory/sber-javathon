@@ -92,6 +92,11 @@ export default {
       expandList() {
           this.listExpanded = !this.listExpanded;
       },
+        expandList1(feature) {
+          this.listExpanded = true;
+          this.showDetail = true;
+            this.activeFeature = feature;
+      },
       openATM(feature) {
           this.showDetail = true;
           this.activeFeature = feature;
@@ -116,7 +121,7 @@ export default {
             this.isShowModalWindow = true;
             this.modalInfo.type = 'Успешно';
             this.modalInfo.info[0].value = Math.round(event.time) + ' минут';
-            this.modalInfo.info[1].value = Math.round(event.distance) + ' минут';
+            this.modalInfo.info[1].value = Math.round(event.distance) + ' метров';
             this.modalInfo.info[2].value = Math.round(event.time + 20) + ' минут';
             this.listExpanded = false;
             setTimeout(() => {
@@ -133,6 +138,9 @@ export default {
         }
 
     },
+    mounted() {
+        this.$bus.$on('foundObjectOnMap', this.expandList1);
+    }
 }
 </script>
 
