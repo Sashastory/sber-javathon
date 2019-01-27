@@ -33,9 +33,6 @@ public class DirectExpertScorer extends AbstractServiceScorer {
 
     @Override
     public GeoJsonObject getCashMachines(GsonObject currentLocation) {
-        // ТУТ ЖЕ НАДО ИСКАТЬ В БД!
-
-        // ПОЛУЧАЕМ GEOJSON С БАНКОМАТАМИ
         Mono<String> geoJson = coordinatesResolver.search(currentLocation, "банкоматы Сбербанка");
 
         List<Action> actions = new ArrayList<>();
@@ -60,10 +57,6 @@ public class DirectExpertScorer extends AbstractServiceScorer {
         resultCashMachines.setType("FeatureCollection");
         resultCashMachines.setFeatures(suitableCashMachines);
 
-        // ОЦЕНИВАЕМ ЯКОБЫ СБЕРОМ ДОСТУПНЫ ЛИ БАНКОМАТЫ
-        // ОНИ КЛАДУТ ТОГГЛ В ПОЛЕ ДЕСКРИПШН
-
-        // ПОКА ПРОСТО ОТДАЕМ ЕГО В ИСХОДНОМ ВИДЕ
         return resultCashMachines;
 
     }
