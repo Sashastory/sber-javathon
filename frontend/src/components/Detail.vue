@@ -20,7 +20,7 @@
         <span>телефон:</span> {{ model.phones[0].formatted }}
       </div>
       <div class="info-item">
-        <span>время работы:</span> {{ model.hours.text}}
+        <span>время работы:</span> {{ model.hours ? model.hours.text: 'Нет данных'}}
       </div>
       <div class="info-item">
         <span>индекс:</span> {{ model.postalCode }}

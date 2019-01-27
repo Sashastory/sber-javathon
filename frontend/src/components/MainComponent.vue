@@ -22,6 +22,7 @@
                 @newFeatures="setNewFeatures"
                 @suceessBooking="showSuceess"
                 @unsuceessBooking="showUnSuceess"></Map>
+        <modalWindow v-if="isShowModalWindow" :info="modalInfo"></modalWindow>
     </div>
 </template>
 
@@ -29,6 +30,7 @@
     import Map from './map/Map';
     import FeatureToggle from './FeatureToggle';
     import List from './List';
+    import modalWindow from './modalWindow';
 
     export default {
         name: "MainComponent",
@@ -36,6 +38,7 @@
             Map,
             FeatureToggle,
             List,
+            modalWindow,
         },
         data() {
             return {
@@ -47,7 +50,33 @@
                 ],
                 activeFeature: null,
                 showDetail: false,
-                features: []
+                features: [],
+                modalInfo: {
+                    type: 'Успешно',
+                    info: [
+                        {
+                            type: 'Успешно',
+                            name: 'Время в пути ',
+                            value: 1
+                        },
+                        {
+                            type: 'Успешно',
+                            name: 'Расстояние ',
+                            value: 1
+                        },
+                        {
+                            type: 'Успешно',
+                            name: 'Средства забронированы на ',
+                            value: 1
+                        },
+                        {
+                            type: 'Не успешно',
+                            name: 'В данном банкомате средства не могут быть забронированы',
+                            value: ''
+                        },
+                    ]
+                },
+                isShowModalWindow: false,
             };
         },
         methods: {
@@ -77,11 +106,24 @@
             bookMoney() {
                 this.$bus.$emit('bookMoney', this.activeFeature);
             },
-            showSuceess() {
-                console.log('showSuceess');
+            showSuceess(event) {
+                this.isShowModalWindow = true;
+                this.modalInfo.type = 'Успешно';
+                this.modalInfo.info[0].value = Math.round(event.time) + ' минут';
+                this.modalInfo.info[1].value = Math.round(event.distance) + ' минут';
+                this.modalInfo.info[2].value = Math.round(event.time + 20) + ' минут';
+                this.listExpanded = false;
+                setTimeout(() => {
+                    this.isShowModalWindow = false;
+                }, 6000);
             },
             showUnSuceess() {
-                console.log('showUnSuceess');
+                this.isShowModalWindow = true;
+                this.modalInfo.type = 'Не успешно';
+                this.listExpanded = false;
+                setTimeout(() => {
+                    this.isShowModalWindow = false;
+                }, 6000);
             }
         },
     }
