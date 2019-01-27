@@ -49,10 +49,6 @@ export default {
   props: {
     model: Object,
   },
-    watch: {
-        model(val) {console.log(val)}
-
-    }
 }
 </script>
 
@@ -96,7 +92,7 @@ export default {
 .info-item {
   margin-bottom: 0.5rem;
 }
-.info-item > span{
+.info-item > span:first-child{
   display: inline-block;
   width: 8rem;
   margin-right: 0.5rem;
@@ -106,5 +102,10 @@ export default {
 .route-button {
   width: 40%;
   margin: 1rem 9px;
+}
+@media(max-width: 1024px) {
+  .info-item > span:last-child{
+    display: flex;
+  }
 }
 </style>
