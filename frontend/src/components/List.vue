@@ -17,6 +17,7 @@
         v-if="showDetail"
         :model="activeFeature"
         @viewOnMap="$emit('viewOnMap')"
+        @bookMoney="$emit('bookMoney')"
         @closeDetail="$emit('closeATM')">
       </Detail>
     </div>

@@ -45,6 +45,8 @@
                 geojsonToArcGIS,
                 action: 'take',
                 amount: 1000,
+                showObject: null,
+                currentPoint: null,
             };
         },
         methods: {
@@ -86,6 +88,7 @@
                 }
             },
             createBuffer() {
+                this.currentPoint = this.view.center.clone();
                 return this.geometryEngine.geodesicBuffer(this.view.center.clone(), 1000, "meters");
             },
             getATM() {
@@ -125,10 +128,45 @@
                 }.bind(this));
             },
             showATM(object) {
-                const showObject = this.features.find((feature) => {
+                this.showObject = this.features.find((feature) => {
                     return feature.properties.CompanyMetaData.id === object.id;
                 });
+                this.view.goTo({
+                    center: [showObject.geometry.coordinates[0], showObject.geometry.coordinates[1]],
+                    zoom: 17,
+                }, {
+                    duration: 500
+                });
                 console.log(showObject);
+            },
+            bookMoney(object) {
+                this.showObject = this.features.find((feature) => {
+                    return feature.properties.companyMetaData.address === object.address;
+                });
+                axios.get(configMap.getURLBook(),
+                    { object: this.showObject },
+                    {
+                        headers: {
+                            'Access-Control-Allow-Credentials': true,
+                            "Access-Control-Allow-Origin": "*"
+                        }
+                    }).then(this.handleResponseBooking)
+                    .catch((error) => console.log(error));
+            },
+            handleResponseBooking(resp) {
+              if (resp.data.value) {
+                  const distance = this.geometryEngine.distance(
+                      this.view.toMap(new this.Point(this.showObject.geometry.coordinates[0], this.showObject.geometry.coordinates[1])),
+                      this.currentPoint,
+                      'meters');
+                  const time = distance / 100;
+                  this.$emit('suceessBooking', {
+                      time,
+                      distance
+                  });
+              } else {
+                  this.$emit('unsuceessBooking');
+              }
             }
         },
         mounted() {
@@ -195,6 +233,7 @@
             esriLoader.loadCss('https://js.arcgis.com/4.10/esri/css/main.css');
             this.$bus.$on('getATM', this.getATM);
             this.$bus.$on('showFeature', this.showATM);
+            this.$bus.$on('bookMoney', this.bookMoney);
         }
     }
 </script>

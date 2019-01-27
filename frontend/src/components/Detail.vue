@@ -17,15 +17,15 @@
         </div>
       </div>
       <div class="info-item">
-        <span>телефон:</span> {{ model.Phones[0].formatted }}
+        <span>телефон:</span> {{ model.phones[0].formatted }}
       </div>
       <div class="info-item">
-        <span>время работы:</span> {{ model.Hours.text}}
+        <span>время работы:</span> {{ model.hours.text}}
       </div>
       <div class="info-item">
         <span>индекс:</span> {{ model.postalCode }}
       </div>
-      <div v-for="(item, i)  in model.Features" class="info-item" :key="i">
+      <div v-for="(item, i)  in model.features" class="info-item" :key="i">
         <span v-if="i !== 0"></span>
         <span v-if="i === 0">возможности:</span> {{ item.name }}
       </div>
@@ -34,16 +34,25 @@
         class="button route-button">
         Показать на карте
       </button>
+      <button
+        @click="$emit('bookMoney')"
+        class="button route-button">
+        Забронировать средства
+      </button>
     </div>
   </div>
 </template>
 
-<script> 
+<script>
 export default {
   name: 'Detail',
   props: {
     model: Object,
   },
+    watch: {
+        model(val) {console.log(val)}
+
+    }
 }
 </script>
 
@@ -95,6 +104,7 @@ export default {
   color: rgba(0,0,0,0.5);
 }
 .route-button {
-  margin-top: 1rem;
+  width: 40%;
+  margin: 1rem 9px;
 }
 </style>
