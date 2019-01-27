@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class MainController {
 
@@ -24,8 +25,8 @@ public class MainController {
         this.cashMachineTestService = testService;
     }
 
-    @PostMapping(path = "/atms")
-    public @ResponseBody String getAtms(@RequestBody GsonObject body) {
+    @PostMapping(path = "/cashMachines", produces = "application/json")
+    public @ResponseBody String getCashMachines(@RequestBody GsonObject body) {
         LOG.info(body.toString());
         return expertSystemService.getCashMachines(body);
     }
