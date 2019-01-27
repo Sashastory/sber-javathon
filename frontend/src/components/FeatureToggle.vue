@@ -1,15 +1,18 @@
 <template>
   <div class="feature-toggle">
+    <div>
         <button class="button feature-toggle-button"
-            :class="{disable: (activeFeature === 1)}"
-            @click="$emit('toggleFeature', 0)">
+            :class="{disable: (activeType === 1)}"
+            @click="$emit('toggleType', 0)">
             Снять
         </button>
         <button class="button feature-toggle-button"
-            :class="{disable: (activeFeature === 0)}"
-            @click="$emit('toggleFeature', 1)">
+            :class="{disable: (activeType === 0)}"
+            @click="$emit('toggleType', 1)">
             Внести
         </button>
+    </div>
+    <input class="button input" type="number"/>
   </div>
 </template>
 
@@ -17,7 +20,7 @@
 export default {
     name: "FeatureToggle",
     props: {
-      activeFeature: Number,
+      activeType: Number,
     }
 }
 </script>
@@ -45,5 +48,10 @@ export default {
 }
 .disable {
     background-color: rgb(190,190,190);
+}
+.input {
+  display: block;
+  background-color: #fff;
+  color: #000;
 }
 </style>

@@ -1,16 +1,23 @@
 <template>
     <div class="main">
         <FeatureToggle
-            :activeFeature='activeFeature'
-            @toggleFeature="toggleFeature">
+            :activeType='activeType'
+            @toggleType="toggleType">
         </FeatureToggle>
-        <div class="ok-panel">
-            <button class="button ok-button" @click="getATM">
-                Показать банкоматы
-            </button>
-        </div>
-        <List></List>
-        <Map class="map"></Map>
+        <button class="button ok-button" @click="getATM">
+            Показать банкоматы
+        </button>
+        <List
+            @expand="expandList"
+            @openATM="openATM"
+            @closeATM="closeATM"
+            @viewOnMap="viewOnMap"
+            :features="features"
+            :activeFeature="activeFeature"
+            :showDetail="showDetail"
+            :listExpanded="listExpanded">
+        </List>
+        <Map></Map>
     </div>
 </template>
 
@@ -28,36 +35,126 @@ export default {
     },
     data() {
       return {
-        activeFeature: 0,
-        features: [
+        activeType: 0,
+        listExpanded: false,
+        atmTypes: [
           'take',
           'deposit',
+        ],
+        activeFeature: null,
+        showDetail: false,
+        features: [
+            {
+                shortName: 'Сбербанк',
+                id: '1',
+                postalCode: "109012",
+                address: 'Красная площадь, 3',
+                "Phones": [
+                    {
+                      "type": "phone",
+                      "formatted": "8 (800) 555-55-50",
+                      "country": "7",
+                      "prefix": "800",
+                      "number": "5555550"
+                    },
+                ],
+                "Hours": {
+                    "Availabilities": [
+                      {
+                        "Everyday": true,
+                        "Intervals": [
+                          {
+                            "from": "10:00:00",
+                            "to": "22:00:00"
+                          }
+                        ]
+                      }
+                    ],
+                    "text": "ежедневно, 10:00–22:00",
+                    "tzOffset": 10800,
+                    "State": {
+                      "is_open_now": "0",
+                      "text": "Закрыто до 10:00",
+                      "short_text": "Закрыто до 10:00"
+                    }
+                },
+                "Features": [
+                    {
+                      "id": "cash_to_card",
+                      "type": "bool",
+                      "name": "внесение наличных",
+                      "value": false
+                    },
+                    {
+                      "id": "location_opening_hours",
+                      "type": "bool",
+                      "name": "в режиме работы места установки",
+                      "value": true
+                    }
+                ],
+            },
+            {
+                shortName: 'Сбербанк',
+                id: '1',
+                address: 'Красная площадь, 3',
+            },
+            {
+                shortName: 'Сбербанк',
+                id: '1',
+                address: 'Красная площадь, 3',
+            },
+            {
+                shortName: 'Сбербанк',
+                id: '1',
+                address: 'Красная площадь, 3',
+            },
         ]
       };
     },
     methods: {
-      toggleFeature(index) {
-        this.activeFeature = index;
-        console.log(this.features[index]);
+      toggleType(index) {
+        this.activeType = index;
+        console.log(this.atmTypes[index]);
       },
       getATM() {
           this.$bus.$emit('getATM');
+      },
+      expandList() {
+          console.log('expand list');
+          this.listExpanded = !this.listExpanded;
+      },
+      openATM(feature) {
+          console.log(feature);
+          this.showDetail = true;
+          this.activeFeature = feature;
+      },
+      closeATM() {
+          this.showDetail = false;
+      },
+      viewOnMap() {
+          console.log('viewOnMap');
+
       }
     },
 }
 </script>
 
 <style>
-    .map {
-        height: 100%;
-        width: 100%;
-    }
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,500');
+.map {
+    height: 100%;
+    width: 100%;
+}
 .main {
     position: relative;
     height: 100%;
     width: 100%;
     font-size: 1rem;
     overflow: hidden;
+    font-family: 'Roboto';
+}
+button {
+    font-family: 'Roboto';
 }
 .button {
     padding: 0.5rem 1rem;
@@ -82,7 +179,11 @@ button:hover {
     z-index: 2;
 }
 .ok-button {
+    position: absolute;
+    width: 260px;
     height: 60px;
+    bottom: 4rem;
+    left: calc(50% - 130px);
     padding: 0.6rem 1.16rem 0.6rem 3.75rem ;
     background-color: #fff;
     color: #57A913;
@@ -90,6 +191,7 @@ button:hover {
     background-size: 42px;
     background-repeat: no-repeat;
     background-position: 1rem center;
+    z-index: 2;
 }
 html {
     height: 100%;
