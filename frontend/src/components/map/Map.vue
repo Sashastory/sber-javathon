@@ -120,9 +120,11 @@
                         width: "32px",
                         height: "32px"
                     };
+                    console.log(feature);
                     const pointGraphic = new this.Graphic({
-                        geometry: new this.Point(feature.geometry.coordinates[0], feature.geometry.coordinates[1]),
-                        symbol: markerSymbol
+                        geometry: this.geometryEngine.geodesicBuffer(new this.Point(feature.geometry.coordinates[0], feature.geometry.coordinates[1]), 50, "meters"),
+                        symbol: markerSymbol,
+                        attributes: feature.properties.companyMetaData,
                     });
                     this.bufferLayer.add(pointGraphic);
                 }.bind(this));
@@ -137,7 +139,6 @@
                 }, {
                     duration: 500
                 });
-                console.log(showObject);
             },
             bookMoney(object) {
                 this.showObject = this.features.find((feature) => {
@@ -167,6 +168,21 @@
               } else {
                   this.$emit('unsuceessBooking');
               }
+            },
+            searchFeature(event) {
+                var screenPoint = {
+                    x: event.x,
+                    y: event.y
+                };
+                this.view.hitTest(screenPoint).then(function (response) {
+                    if (response.results.length) {
+                        const object = response.results[0];
+                        const foundObject = this.features.find((feature) => {
+                            return feature.properties.companyMetaData.address === object.graphic.attributes.address;
+                        });
+                        this.$bus.$emit('foundObjectOnMap', object.graphic.attributes);
+                    }
+                }.bind(this));
             }
         },
         mounted() {
@@ -213,8 +229,9 @@
                         }
                         this.bufferLayer = new GraphicsLayer();
                         this.map.add(this.bufferLayer);
-                    });
 
+                    });
+                    this.view.on('click', this.searchFeature);
                     this.view.constraints = {
                         rotationEnabled: false
                     };
