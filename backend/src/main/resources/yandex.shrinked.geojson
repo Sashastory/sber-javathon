@@ -1,0 +1,99 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1",
+        "CompanyMetaData": {
+          "id": "1044581598",
+          "name": "Сбербанк России, банкомат",
+          "shortName": "Сбербанк",
+          "address": "Красная площадь, 3",
+          "postalCode": "109012",
+          "url": "http://www.sberbank.ru/",
+          "Categories": [
+            {
+              "class": "atm",
+              "name": "Банкомат",
+              "Tags": {
+                "tag": "plural_name:Банкоматы"
+              }
+            }
+          ],
+          "Phones": [
+            {
+              "type": "phone",
+              "formatted": "8 (800) 555-55-50"
+            },
+            {
+              "type": "phone",
+              "formatted": "+7 (495) 555-55-50"
+            },
+            {
+              "type": "phone",
+              "formatted": "+7 (495) 500-55-50"
+            }
+          ],
+          "Hours": {
+            "Availabilities": [
+              {
+                "Everyday": true,
+                "Intervals": [
+                  {
+                    "from": "10:00:00",
+                    "to": "22:00:00"
+                  }
+                ]
+              }
+            ],
+            "text": "ежедневно, 10:00–22:00",
+            "tzOffset": 10800,
+            "State": {
+              "is_open_now": "0",
+              "text": "Закрыто до 10:00",
+              "short_text": "Закрыто до 10:00"
+            }
+          },
+          "Features": [
+            {
+              "id": "cash_to_card",
+              "type": "bool",
+              "name": "внесение наличных",
+              "value": false
+            },
+            {
+              "id": "location_opening_hours",
+              "type": "bool",
+              "name": "в режиме работы места установки",
+              "value": true
+            }
+          ],
+          "Snippet": {
+            "FeatureSet": [
+              "cash_to_card"
+            ]
+          }
+        },
+        "description": "Красная площадь, 3",
+        "name": "Сбербанк России, банкомат"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.621544,
+          55.754673
+        ]
+      },
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            37.621544,
+            55.754673
+          ]
+        }
+      ]
+    }
+  ]
+}

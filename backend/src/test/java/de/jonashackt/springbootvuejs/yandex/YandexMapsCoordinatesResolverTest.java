@@ -1,6 +1,10 @@
 package de.jonashackt.springbootvuejs.yandex;
 
+import com.github.filosganga.geogson.gson.GeometryAdapterFactory;
+import com.github.filosganga.geogson.jts.JtsAdapterFactory;
+import com.github.filosganga.geogson.model.FeatureCollection;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import de.jonashackt.springbootvuejs.model.gsonobject.Feature;
 import de.jonashackt.springbootvuejs.model.gsonobject.Geometry;
@@ -56,9 +60,15 @@ public class YandexMapsCoordinatesResolverTest {
         object.setFeatures(Arrays.asList(f));
 
 
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapterFactory(new JtsAdapterFactory())
+                .registerTypeAdapterFactory(new GeometryAdapterFactory())
+                .create();
+
         Mono<String> mono = yandexMapsCoordinatesResolver.search(object, "Банкоматы Сбербанк");
         String res = mono.block();
 
+        FeatureCollection featureCollection = gson.fromJson(res, FeatureCollection.class);
         System.out.println(res);
 
     }

@@ -1,13 +1,12 @@
 package de.jonashackt.springbootvuejs.service.impl;
 
-import de.jonashackt.springbootvuejs.model.AssessmentScore;
-import de.jonashackt.springbootvuejs.model.CashMachine;
+import de.jonashackt.springbootvuejs.model.Assessment;
+import de.jonashackt.springbootvuejs.model.AssessmentParams;
 import de.jonashackt.springbootvuejs.service.ICashMachineAssesser;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 /**
  * Заглушка для определения банкоматов по желаемому критерию оценки
@@ -16,40 +15,20 @@ import java.util.stream.Collectors;
  */
 @Service
 public class SberMockAssesser implements ICashMachineAssesser {
+
     @Override
-    public List<CashMachine> getAssessment(List<CashMachine> machines, AssessmentScore score) {
+    public Assessment getAssessment(List<Double> coordinates, AssessmentParams score) {
 
-        List<CashMachine> result = null;
+        Random random = new Random();
+        int boundary;
 
-        switch (score) {
-
-            case CAN_DEPOSIT: {
-
-                Random random = new Random();
-                int i = random.nextInt(machines.size());
-
-                if (machines.size() != 0) {
-                    result = machines.stream().skip(i).collect(Collectors.toList());
-                }
-
-                break;
-            }
-
-            case CAN_WITHDRAW: {
-
-                Random random = new Random();
-                int j = random.nextInt(machines.size());
-
-                if (machines.size() != 0) {
-                    result = machines.stream().filter(cm -> cm.getId() != j).collect(Collectors.toList());
-                }
-                break;
-            }
-
-            default:
-                break;
+        if (score.getAmount() > 100000) {
+            boundary = 4;
+        } else {
+            boundary = 10;
         }
+        int b = random.nextInt(boundary);
 
-        return result;
+        return b > 2 ? Assessment.SUITABLE : Assessment.NOT_SUITABLE;
     }
 }

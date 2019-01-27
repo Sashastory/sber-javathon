@@ -12,6 +12,12 @@ public class Metadata {
     @SerializedName("creator")
     @Expose
     private String creator;
+    @SerializedName("action")
+    @Expose
+    private String action;
+    @SerializedName("amount")
+    @Expose
+    private Integer amount;
 
     public Metadata() {
     }
@@ -35,6 +41,22 @@ public class Metadata {
 
     public void setCreator(String creator) {
         this.creator = creator;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     @Override
