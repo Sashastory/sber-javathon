@@ -1,6 +1,7 @@
 package de.jonashackt.springbootvuejs.controller;
 
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
+import de.jonashackt.springbootvuejs.model.gsonobject.yandex.GeoJsonObject;
 import de.jonashackt.springbootvuejs.service.impl.CashMachineTestService;
 import de.jonashackt.springbootvuejs.service.impl.ExpertSystemService;
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ public class MainController {
     }
 
     @PostMapping(path = "/cashMachines", produces = "application/json")
-    public @ResponseBody String getCashMachines(@RequestBody GsonObject body) {
+    public @ResponseBody GeoJsonObject getCashMachines(@RequestBody GsonObject body) {
         LOG.info(body.toString());
         return expertSystemService.getCashMachines(body);
     }
