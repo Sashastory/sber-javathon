@@ -1,6 +1,5 @@
 package ru.javathon.springbootvuejs.service.impl;
 
-import de.jonashackt.springbootvuejs.model.gsonobject.*;
 import lombok.ToString;
 import org.springframework.stereotype.Service;
 import ru.javathon.springbootvuejs.model.gsonobject.*;
