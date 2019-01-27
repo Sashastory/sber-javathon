@@ -20,8 +20,15 @@ public class SberMockAssesser implements ICashMachineAssesser {
     public Assessment getAssessment(List<Double> coordinates, AssessmentParams score) {
 
         Random random = new Random();
-        boolean b = random.nextBoolean();
+        int boundary;
 
-        return b ? Assessment.SUITABLE : Assessment.NOT_SUITABLE;
+        if (score.getAmount() > 100000) {
+            boundary = 4;
+        } else {
+            boundary = 10;
+        }
+        int b = random.nextInt(boundary);
+
+        return b > 2 ? Assessment.SUITABLE : Assessment.NOT_SUITABLE;
     }
 }
