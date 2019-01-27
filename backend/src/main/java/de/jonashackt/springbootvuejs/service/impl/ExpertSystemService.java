@@ -18,7 +18,7 @@ public class ExpertSystemService {
 
     private ICoordinatesResolver coordinatesResolver;
 
-    private IMapper<CashMachine, String> mapper;
+    private IMapper<String> mapper;
 
     public GsonObject getCashMachines(GsonObject currentLocation) {
         // ПОЛУЧАЕМ GEOJSON С БАНКОМАТАМИ

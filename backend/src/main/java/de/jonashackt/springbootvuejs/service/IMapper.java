@@ -8,6 +8,5 @@ import java.util.List;
  * @date 2019-01-26 22:30
  */
 public interface IMapper<T> {
-
     List<T> map(String geoJson);
 }
