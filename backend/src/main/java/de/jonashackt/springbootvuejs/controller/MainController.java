@@ -3,7 +3,7 @@ package de.jonashackt.springbootvuejs.controller;
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
 import de.jonashackt.springbootvuejs.model.gsonobject.yandex.GeoJsonObject;
 import de.jonashackt.springbootvuejs.service.impl.CashMachineTestService;
-import de.jonashackt.springbootvuejs.service.impl.ExpertSystemService;
+import de.jonashackt.springbootvuejs.service.impl.DirectExpertScorer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +17,12 @@ public class MainController {
 
     public static final String MOCK_RESOURCE = "Mock resource";
 
-    private ExpertSystemService expertSystemService;
+    private DirectExpertScorer expertSystemService;
 
     private CashMachineTestService cashMachineTestService;
 
-    public MainController(ExpertSystemService expertSystemService, CashMachineTestService testService) {
-        this.expertSystemService = expertSystemService;
+    public MainController(DirectExpertScorer directExpertService, CashMachineTestService testService) {
+        this.expertSystemService = directExpertService;
         this.cashMachineTestService = testService;
     }
 

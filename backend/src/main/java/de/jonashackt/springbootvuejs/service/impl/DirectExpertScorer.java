@@ -1,12 +1,13 @@
 package de.jonashackt.springbootvuejs.service.impl;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import de.jonashackt.springbootvuejs.model.Action;
 import de.jonashackt.springbootvuejs.model.Assessment;
 import de.jonashackt.springbootvuejs.model.AssessmentParams;
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
 import de.jonashackt.springbootvuejs.model.gsonobject.yandex.Feature;
 import de.jonashackt.springbootvuejs.model.gsonobject.yandex.GeoJsonObject;
+import de.jonashackt.springbootvuejs.service.AbstractServiceScorer;
 import de.jonashackt.springbootvuejs.service.ICashMachineAssesser;
 import de.jonashackt.springbootvuejs.service.ICoordinatesResolver;
 import de.jonashackt.springbootvuejs.service.IMapper;
@@ -17,42 +18,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Сервис для оценки банкоматов напрямую из полученных данных от Yandex API
  * @author aleksandr
  * @date 2019-01-26 20:58
  */
 @Service
-public class ExpertSystemService {
+public class DirectExpertScorer extends AbstractServiceScorer {
 
-    private ICashMachineAssesser assesser;
 
-    private ICoordinatesResolver coordinatesResolver;
+    public DirectExpertScorer(ICashMachineAssesser assesser, ICoordinatesResolver coordinatesResolver,
+                              IMapper<Feature> mapper) {
 
-    private IMapper<Feature> mapper;
-
-    private Gson GSON = new Gson();
-
-    public ExpertSystemService(ICashMachineAssesser assesser, ICoordinatesResolver coordinatesResolver,
-                               IMapper<Feature> mapper) {
-        this.assesser = assesser;
-        this.coordinatesResolver = coordinatesResolver;
-        this.mapper = mapper;
+        super(assesser, coordinatesResolver, mapper);
     }
 
+    @Override
     public GeoJsonObject getCashMachines(GsonObject currentLocation) {
+        // ТУТ ЖЕ НАДО ИСКАТЬ В БД!
 
         // ПОЛУЧАЕМ GEOJSON С БАНКОМАТАМИ
         Mono<String> geoJson = coordinatesResolver.search(currentLocation, "банкоматы Сбербанка");
-        String jsonValue = geoJson.block();
 
-        GeoJsonObject geoJsonObject = GSON.fromJson(jsonValue, new TypeToken<GeoJsonObject>() {}.getType());
-
+        List<Action> actions = new ArrayList<>();
+        actions.add(Action.valueOf(currentLocation.getMetadata().getAction().toUpperCase()));
+        AssessmentParams params = new AssessmentParams(actions, currentLocation.getMetadata().getAmount());
 
         List<Feature> suitableCashMachines = new ArrayList<>();
-        if (geoJsonObject != null) {
-            List<Feature> cashMachines = mapper.map(jsonValue);
+        String jsonValue = geoJson.block();
+        List<Feature> cashMachines = mapper.map(jsonValue);
+        if (cashMachines.size() > 0) {
             for (Feature cashMachine : cashMachines) {
                 List<Double> coordinates = cashMachine.getGeometry().getCoordinates();
-                Assessment result = assesser.getAssessment(coordinates, new AssessmentParams());
+                Assessment result = assesser.getAssessment(coordinates, params);
 
                 if (Assessment.SUITABLE.equals(result)) {
                     suitableCashMachines.add(cashMachine);
@@ -66,10 +63,6 @@ public class ExpertSystemService {
 
         // ОЦЕНИВАЕМ ЯКОБЫ СБЕРОМ ДОСТУПНЫ ЛИ БАНКОМАТЫ
         // ОНИ КЛАДУТ ТОГГЛ В ПОЛЕ ДЕСКРИПШН
-
-        // МАПИМ ЕГО В БАНКОМАТЫ И СОХРАНЯЕМ ИХ В БД
-
-
 
         // ПОКА ПРОСТО ОТДАЕМ ЕГО В ИСХОДНОМ ВИДЕ
         return resultCashMachines;

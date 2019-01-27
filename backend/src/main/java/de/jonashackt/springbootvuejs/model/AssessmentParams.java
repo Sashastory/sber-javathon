@@ -8,6 +8,11 @@ import java.util.List;
  */
 public class AssessmentParams {
 
+    public AssessmentParams(List<Action> actions, int amount) {
+        this.actions = actions;
+        this.amount = amount;
+    }
+
     // Список действий (снять, положить, и тп )
     private List<Action> actions;
 
