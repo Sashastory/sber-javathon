@@ -42,7 +42,9 @@
                 webMercatorUtils: null,
                 features: null,
                 PictureMarkerSymbol: null,
-                geojsonToArcGIS
+                geojsonToArcGIS,
+                action: 'take',
+                amount: 1000,
             };
         },
         methods: {
@@ -61,8 +63,10 @@
                 return {
                     type: "FeatureCollection",
                     metadata: {
-                        "name": "Зона доступности",
-                        "creator": "Приложение"
+                        name: "Зона доступности",
+                        creator: "Приложение",
+                        action: this.action,
+                        amount: this.amount
                     },
                     features: [
                         {
@@ -87,9 +91,7 @@
             getATM() {
                 this.bufferLayer.removeAll();
                 const buffer = this.createBuffer();
-                console.log(buffer);
                 const geojson = arcgisToGeoJSON(this.webMercatorUtils.webMercatorToGeographic(buffer));
-                console.log(geojson);
                 axios.post(configMap.getURLServer(),
                     this.createSendObject(geojson),
                     {
