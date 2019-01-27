@@ -9,7 +9,6 @@ public class Availability {
 
     private Boolean everyday;
     private List<Interval> intervals = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Boolean getEveryday() {
         return everyday;
@@ -25,14 +24,6 @@ public class Availability {
 
     public void setIntervals(List<Interval> intervals) {
         this.intervals = intervals;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

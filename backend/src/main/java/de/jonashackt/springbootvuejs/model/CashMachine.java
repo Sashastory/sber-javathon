@@ -24,7 +24,7 @@ public class CashMachine {
     private Integer withdrawalLimit;
 
     // ЛИМИТ НА ДЕПОЗИТ
-    @Column(name = "DE  POSIT_LIMIT")
+    @Column(name = "DEPOSIT_LIMIT")
     private Integer depositLimit;
 
     // ШИРОТА
@@ -34,6 +34,14 @@ public class CashMachine {
     // ДОЛГОТА
     @Column(name = "LONGITUDE")
     private Double longitude;
+
+    @Column(name = "ADDRESS")
+    private String address;
+
+    @Column(name = "NAME")
+    private String name;
+
+    @Column
 
     public Long getId() {
         return id;

@@ -1,17 +1,19 @@
 
 package de.jonashackt.springbootvuejs.model.gsonobject.yandex;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Document("atm")
 public class Feature {
 
     private String type;
     private Properties properties;
     private Geometry geometry;
     private List<Geometry> geometries = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getType() {
         return type;
@@ -45,12 +47,13 @@ public class Feature {
         this.geometries = geometries;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    @Override
+    public String toString() {
+        return "Feature{" +
+                "type='" + type + '\'' +
+                ", properties=" + properties +
+                ", geometry=" + geometry +
+                ", geometries=" + geometries +
+                '}';
     }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

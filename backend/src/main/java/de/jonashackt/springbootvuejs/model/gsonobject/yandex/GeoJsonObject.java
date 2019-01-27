@@ -1,15 +1,12 @@
 
 package de.jonashackt.springbootvuejs.model.gsonobject.yandex;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class YandexObject {
+public class GeoJsonObject {
 
     private String type;
     private List<Feature> features = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getType() {
         return type;
@@ -27,12 +24,11 @@ public class YandexObject {
         this.features = features;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    @Override
+    public String toString() {
+        return "GeoJsonObject{" +
+                "type='" + type + '\'' +
+                ", features=" + features +
+                '}';
     }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

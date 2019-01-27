@@ -8,7 +8,6 @@ import java.util.Map;
 public class Snippet {
 
     private List<String> featureSet = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public List<String> getFeatureSet() {
         return featureSet;
@@ -16,14 +15,6 @@ public class Snippet {
 
     public void setFeatureSet(List<String> featureSet) {
         this.featureSet = featureSet;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

@@ -10,7 +10,6 @@ public class PropertyFeature {
     private String type;
     private String name;
     private Boolean value;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -42,14 +41,6 @@ public class PropertyFeature {
 
     public void setValue(Boolean value) {
         this.value = value;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }
