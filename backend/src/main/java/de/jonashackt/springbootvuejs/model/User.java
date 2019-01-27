@@ -3,22 +3,17 @@ package de.jonashackt.springbootvuejs.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
 @Setter
 @Getter
-@Table(name = "user_table")
+@Document("user")
 @ToString
 public class User {
 
     public User() {
     }
 
-    @Id
     private String id;
 
     private String name;
@@ -27,3 +22,4 @@ public class User {
     private String gender;
 
 }
+

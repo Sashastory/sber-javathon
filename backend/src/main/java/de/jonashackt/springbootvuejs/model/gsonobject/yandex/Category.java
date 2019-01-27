@@ -3,9 +3,6 @@ package de.jonashackt.springbootvuejs.model.gsonobject.yandex;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Category {
 
     @Field("class")

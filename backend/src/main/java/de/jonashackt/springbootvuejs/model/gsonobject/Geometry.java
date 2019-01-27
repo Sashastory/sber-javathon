@@ -1,9 +1,10 @@
 package de.jonashackt.springbootvuejs.model.gsonobject;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.ToString;
+
+import java.util.List;
 
 @ToString
 public class Geometry {

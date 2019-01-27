@@ -1,9 +1,7 @@
 
 package de.jonashackt.springbootvuejs.model.gsonobject.yandex;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Availability {
 

@@ -3,16 +3,15 @@ package de.jonashackt.springbootvuejs.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
 @Getter
 @Setter
+@Document("message")
 public class Message {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+
     private Long id;
 
     private String text;
@@ -20,8 +19,6 @@ public class Message {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime creationDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
     private User author;
 
     public Message() {

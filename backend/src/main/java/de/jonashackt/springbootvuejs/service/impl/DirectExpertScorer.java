@@ -1,6 +1,5 @@
 package de.jonashackt.springbootvuejs.service.impl;
 
-import com.google.gson.Gson;
 import de.jonashackt.springbootvuejs.model.Action;
 import de.jonashackt.springbootvuejs.model.Assessment;
 import de.jonashackt.springbootvuejs.model.AssessmentParams;

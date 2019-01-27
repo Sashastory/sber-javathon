@@ -2,7 +2,6 @@ package de.jonashackt.springbootvuejs.service;
 
 import de.jonashackt.springbootvuejs.model.Assessment;
 import de.jonashackt.springbootvuejs.model.AssessmentParams;
-import de.jonashackt.springbootvuejs.model.gsonobject.yandex.GeoJsonObject;
 
 import java.util.List;
 
