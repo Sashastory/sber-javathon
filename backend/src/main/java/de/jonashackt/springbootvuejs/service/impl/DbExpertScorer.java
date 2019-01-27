@@ -30,12 +30,8 @@ public class DbExpertScorer extends AbstractServiceScorer {
     @Override
     public GeoJsonObject getCashMachines(GsonObject currentLocation) {
 
+        //TODO: Реализовать поиск из БД
         List<de.jonashackt.springbootvuejs.model.gsonobject.Feature> features = currentLocation.getFeatures();
-//        for (de.jonashackt.springbootvuejs.model.gsonobject.Feature feature : features) {
-//            feature.
-//
-//        }
-//        new Polygon()
         return null;
     }
 }
