@@ -5,7 +5,6 @@ import com.google.gson.reflect.TypeToken;
 import de.jonashackt.springbootvuejs.model.Assessment;
 import de.jonashackt.springbootvuejs.model.AssessmentParams;
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
-import de.jonashackt.springbootvuejs.model.CashMachine;
 import de.jonashackt.springbootvuejs.model.gsonobject.yandex.Feature;
 import de.jonashackt.springbootvuejs.model.gsonobject.yandex.GeoJsonObject;
 import de.jonashackt.springbootvuejs.service.ICashMachineAssesser;
@@ -28,11 +27,15 @@ public class ExpertSystemService {
 
     private ICoordinatesResolver coordinatesResolver;
 
+    private IMapper<Feature> mapper;
+
     private Gson GSON = new Gson();
 
-    public ExpertSystemService(ICashMachineAssesser assesser, ICoordinatesResolver coordinatesResolver) {
+    public ExpertSystemService(ICashMachineAssesser assesser, ICoordinatesResolver coordinatesResolver,
+                               IMapper<Feature> mapper) {
         this.assesser = assesser;
         this.coordinatesResolver = coordinatesResolver;
+        this.mapper = mapper;
     }
 
     public GeoJsonObject getCashMachines(GsonObject currentLocation) {
@@ -46,13 +49,13 @@ public class ExpertSystemService {
 
         List<Feature> suitableCashMachines = new ArrayList<>();
         if (geoJsonObject != null) {
-            List<Feature> features = geoJsonObject.getFeatures(); // Банкоматы
-            for (Feature feature : features) {
-                List<Double> coordinates = feature.getGeometry().getCoordinates();
+            List<Feature> cashMachines = mapper.map(jsonValue);
+            for (Feature cashMachine : cashMachines) {
+                List<Double> coordinates = cashMachine.getGeometry().getCoordinates();
                 Assessment result = assesser.getAssessment(coordinates, new AssessmentParams());
 
                 if (Assessment.SUITABLE.equals(result)) {
-                    suitableCashMachines.add(feature);
+                    suitableCashMachines.add(cashMachine);
                 }
             }
         }

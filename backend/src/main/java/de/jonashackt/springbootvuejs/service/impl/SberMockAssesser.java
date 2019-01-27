@@ -2,14 +2,11 @@ package de.jonashackt.springbootvuejs.service.impl;
 
 import de.jonashackt.springbootvuejs.model.Assessment;
 import de.jonashackt.springbootvuejs.model.AssessmentParams;
-import de.jonashackt.springbootvuejs.model.CashMachine;
-import de.jonashackt.springbootvuejs.model.gsonobject.yandex.GeoJsonObject;
 import de.jonashackt.springbootvuejs.service.ICashMachineAssesser;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 /**
  * Заглушка для определения банкоматов по желаемому критерию оценки

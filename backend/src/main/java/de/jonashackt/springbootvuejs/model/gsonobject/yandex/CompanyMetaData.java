@@ -1,6 +1,8 @@
 
 package de.jonashackt.springbootvuejs.model.gsonobject.yandex;
 
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,12 +15,16 @@ public class CompanyMetaData {
     private String address;
     private String postalCode;
     private String url;
+    @Field("Categories")
     private List<Category> categories = null;
+    @Field("Phones")
     private List<Phone> phones = null;
+    @Field("Hours")
     private Hours hours;
+    @Field("Features")
     private List<PropertyFeature> features = null;
+    @Field("Snippet")
     private Snippet snippet;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -106,14 +112,6 @@ public class CompanyMetaData {
 
     public void setSnippet(Snippet snippet) {
         this.snippet = snippet;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }

@@ -11,7 +11,6 @@ public class Hours {
     private String text;
     private Integer tzOffset;
     private State state;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public List<Availability> getAvailabilities() {
         return availabilities;
@@ -43,14 +42,6 @@ public class Hours {
 
     public void setState(State state) {
         this.state = state;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }
