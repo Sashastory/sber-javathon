@@ -41,7 +41,7 @@ export default {
         console.log(this.features[index]);
       },
       getATM() {
-          console.log('get ATM');
+          this.$bus.$emit('getATM');
       }
     },
 }

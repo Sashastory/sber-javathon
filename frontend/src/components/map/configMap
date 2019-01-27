@@ -1,0 +1,5 @@
+export default {
+    getURLServer() {
+        return 'http://10.8.18.42:8088/api/cashMachines';
+    },
+}
