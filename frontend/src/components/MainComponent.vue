@@ -17,7 +17,7 @@
             :showDetail="showDetail"
             :listExpanded="listExpanded">
         </List>
-        <Map></Map>
+        <Map @newFeatures="setNewFeatures"></Map>
     </div>
 </template>
 
@@ -44,70 +44,6 @@ export default {
         activeFeature: null,
         showDetail: false,
         features: [
-            {
-                shortName: 'Сбербанк',
-                id: '1',
-                postalCode: "109012",
-                address: 'Красная площадь, 3',
-                "Phones": [
-                    {
-                      "type": "phone",
-                      "formatted": "8 (800) 555-55-50",
-                      "country": "7",
-                      "prefix": "800",
-                      "number": "5555550"
-                    },
-                ],
-                "Hours": {
-                    "Availabilities": [
-                      {
-                        "Everyday": true,
-                        "Intervals": [
-                          {
-                            "from": "10:00:00",
-                            "to": "22:00:00"
-                          }
-                        ]
-                      }
-                    ],
-                    "text": "ежедневно, 10:00–22:00",
-                    "tzOffset": 10800,
-                    "State": {
-                      "is_open_now": "0",
-                      "text": "Закрыто до 10:00",
-                      "short_text": "Закрыто до 10:00"
-                    }
-                },
-                "Features": [
-                    {
-                      "id": "cash_to_card",
-                      "type": "bool",
-                      "name": "внесение наличных",
-                      "value": false
-                    },
-                    {
-                      "id": "location_opening_hours",
-                      "type": "bool",
-                      "name": "в режиме работы места установки",
-                      "value": true
-                    }
-                ],
-            },
-            {
-                shortName: 'Сбербанк',
-                id: '1',
-                address: 'Красная площадь, 3',
-            },
-            {
-                shortName: 'Сбербанк',
-                id: '1',
-                address: 'Красная площадь, 3',
-            },
-            {
-                shortName: 'Сбербанк',
-                id: '1',
-                address: 'Красная площадь, 3',
-            },
         ]
       };
     },
@@ -132,9 +68,12 @@ export default {
           this.showDetail = false;
       },
       viewOnMap() {
-          console.log('viewOnMap');
-
+          this.$bus.$emit('showFeature', this.activeFeature);
+      },
+      setNewFeatures(features) {
+          this.features = features.map((feature) => feature.properties.CompanyMetaData);
       }
+
     },
 }
 </script>

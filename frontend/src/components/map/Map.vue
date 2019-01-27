@@ -105,6 +105,7 @@
             handleRequest(resp) {
                 if (resp.data.features.length){
                     this.features = resp.data.features;
+                    this.$emit('newFeatures', this.features);
                     this.showFeatures();
                 }
             },
@@ -122,6 +123,12 @@
                     });
                     this.bufferLayer.add(pointGraphic);
                 }.bind(this));
+            },
+            showATM(object) {
+                const showObject = this.features.find((feature) => {
+                    return feature.properties.CompanyMetaData.id === object.id;
+                });
+                console.log(showObject);
             }
         },
         mounted() {
@@ -187,6 +194,7 @@
         created() {
             esriLoader.loadCss('https://js.arcgis.com/4.10/esri/css/main.css');
             this.$bus.$on('getATM', this.getATM);
+            this.$bus.$on('showFeature', this.showATM);
         }
     }
 </script>
