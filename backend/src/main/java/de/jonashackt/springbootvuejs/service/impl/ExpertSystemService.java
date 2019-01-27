@@ -34,8 +34,11 @@ public class ExpertSystemService {
         // ОНИ КЛАДУТ ТОГГЛ В ПОЛЕ ДЕСКРИПШН
 
         // МАПИМ ЕГО В БАНКОМАТЫ И СОХРАНЯЕМ ИХ В БД
-        String jsonValue = geoJson.block();
 
+
+
+        // ПОКА ПРОСТО ОТДАЕМ ЕГО В ИСХОДНОМ ВИДЕ
+        String jsonValue = geoJson.block();
         return jsonValue;
 
     }

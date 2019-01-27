@@ -43,6 +43,7 @@ public class SberMockAssesser implements ICashMachineAssesser {
                 if (machines.size() != 0) {
                     result = machines.stream().filter(cm -> cm.getId() != j).collect(Collectors.toList());
                 }
+
                 break;
             }
 
