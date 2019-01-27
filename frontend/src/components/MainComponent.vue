@@ -2,12 +2,14 @@
     <div class="main">
         <FeatureToggle
             :activeType='activeType'
+            @inputSum="inputSum"
             @toggleType="toggleType">
         </FeatureToggle>
         <button class="button ok-button" @click="getATM">
             Показать банкоматы
         </button>
         <List
+            v-if="features.length"
             @expand="expandList"
             @openATM="openATM"
             @closeATM="closeATM"
@@ -37,6 +39,7 @@ export default {
       return {
         activeType: 0,
         listExpanded: false,
+        sum: 0,
         atmTypes: [
           'take',
           'deposit',
@@ -72,8 +75,10 @@ export default {
       },
       setNewFeatures(features) {
           this.features = features.map((feature) => feature.properties.CompanyMetaData);
+      },
+      inputSum (value) {
+        this.sum = parseInt(value);
       }
-
     },
 }
 </script>

@@ -17,10 +17,10 @@
         </div>
       </div>
       <div class="info-item">
-        <span>телефон:</span> {{ model.Phones[0].formatted }}
+        <span>телефон:</span> <span>{{ model.Phones[0].formatted }}</span>
       </div>
       <div class="info-item">
-        <span>время работы:</span> {{ model.Hours.text}}
+        <span>время работы:</span> <span>{{ model.Hours.text}}</span>
       </div>
       <div class="info-item">
         <span>индекс:</span> {{ model.postalCode }}
@@ -87,7 +87,7 @@ export default {
 .info-item {
   margin-bottom: 0.5rem;
 }
-.info-item > span{
+.info-item > span:first-child{
   display: inline-block;
   width: 8rem;
   margin-right: 0.5rem;
@@ -96,5 +96,10 @@ export default {
 }
 .route-button {
   margin-top: 1rem;
+}
+@media(max-width: 1024px) {
+  .info-item > span:last-child{
+    display: flex;
+  }
 }
 </style>

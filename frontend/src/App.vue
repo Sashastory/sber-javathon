@@ -24,4 +24,27 @@ html, body {
   height: 100%;
   width: 100%;
 }
+div > .esri-ui-corner {
+  top: 7rem;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  box-shadow: none;
+}
+div > .esri-widget {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  box-shadow: none;
+}
+div > .esri-zoom {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  box-shadow: none;
+}
+div > .esri-widget--button {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  background-color: #fff;
+}
 </style>
