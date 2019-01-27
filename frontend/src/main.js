@@ -6,7 +6,19 @@ Vue.config.productionTip = false;
 
 // Bootstrap
 
+
+Object.defineProperty(Vue.prototype, '$bus', {
+    get() {
+        return this.$root.bus;
+    },
+});
+
+
 new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app');
+    router,
+    render: h => h(App),
+    data: {
+        bus: new Vue({}),
+    },
+}).$mount('#app')
+
