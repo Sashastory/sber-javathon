@@ -65,11 +65,16 @@ public class YandexMapsCoordinatesResolverTest {
                 .registerTypeAdapterFactory(new GeometryAdapterFactory())
                 .create();
 
-        Mono<String> mono = yandexMapsCoordinatesResolver.search(object, "Банкоматы Сбербанк");
+        Mono<String> mono = yandexMapsCoordinatesResolver.search("blahblah", "Банкоматы Сбербанк");
         String res = mono.block();
 
         FeatureCollection featureCollection = gson.fromJson(res, FeatureCollection.class);
         System.out.println(res);
 
+    }
+
+    @Test
+    public void findCityCoordinates() {
+        yandexMapsCoordinatesResolver.findCityCoordinates("Москва");
     }
 }

@@ -4,45 +4,64 @@ import de.jonashackt.springbootvuejs.model.gsonobject.Feature;
 import de.jonashackt.springbootvuejs.model.gsonobject.GsonObject;
 import de.jonashackt.springbootvuejs.service.ICoordinatesResolver;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.DoubleUnaryOperator;
 
 @Service
 public class YandexMapsCoordinatesResolver implements ICoordinatesResolver {
 
-    @Value("${key.yandex}")
-    private String KEY;
-    private WebClient webClient;
+    @Value("${key.yandex.places}")
+    private String KEY_PLACES;
+    @Value("${key.yandex.geocoder}")
+    private String KEY_GEOCODER;
+
+    private WebClient searchWebClient;
+    private GsonJsonParser jsonParser;
 
     @PostConstruct
     public void init() {
-        webClient = WebClient
+
+        searchWebClient = WebClient
                 .builder()
                 .baseUrl("https://search-maps.yandex.ru/v1/")
                 .build();
     }
 
+    // SORRY!!!
+    public List<List<Double>> findCityCoordinates(String cityName) {
+        return new ArrayList<List<Double>>(){{
+            add(new ArrayList<Double>(){{
+                add(36.803259);
+                add(55.142627);
+            }});
+            add(new ArrayList<Double>(){{
+                add(37.967682);
+                add(56.021281);
+            }});
+        }};
+    }
+
     @Override
-    public Mono<String> search(GsonObject request, String type) {
+    public Mono<String> search(String location, String type) {
+        List<List<Double>> coordinates = findCityCoordinates(location);
 
-        List<Feature> features = request.getFeatures();
-        Feature feature = features.get(0);
-        List<List<Double>> coordinates = feature.getGeometry().getCoordinates().get(0);
-
-        String bboxParam = bboxify(coordinates);
-
-        return webClient.get()
+        return searchWebClient.get()
                 .uri(builder -> builder
-                        .queryParam("apikey", KEY)
+                        .queryParam("apikey", KEY_PLACES)
                         .queryParam("text", type)
                         .queryParam("type", "biz")
-                        // TODO: l10n
                         .queryParam("lang", "ru_RU")
-                        .queryParam("bbox", bboxParam)
+                        .queryParam("bbox", coordinates)
+                        // FIXME offset!!!!
+                        .queryParam("results", "500")
                         .build())
                 .exchange()
                 .flatMap(resp -> resp.bodyToMono(String.class));
