@@ -5,7 +5,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://10.8.18.42:8079/api/cashMachines',
+                target: 'http://185.174.130.123:8079/api/cashMachines',
                 ws: true,
                 changeOrigin: true
             }

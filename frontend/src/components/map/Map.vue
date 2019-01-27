@@ -129,10 +129,10 @@
             },
             showATM(object) {
                 this.showObject = this.features.find((feature) => {
-                    return feature.properties.CompanyMetaData.id === object.id;
+                    return feature.properties.companyMetaData.address === object.address;
                 });
                 this.view.goTo({
-                    center: [showObject.geometry.coordinates[0], showObject.geometry.coordinates[1]],
+                    center: [this.showObject.geometry.coordinates[0], this.showObject.geometry.coordinates[1]],
                     zoom: 17,
                 }, {
                     duration: 500
